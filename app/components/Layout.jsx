@@ -413,7 +413,7 @@ function FooterMenu({menu}) {
                 {item?.items?.length > 0 ? (
                   <div
                     className={`${
-                      open ? `max-h-48 h-fit` : `max-h-0 md:max-h-fit`
+                      open ? 'max-h-48 h-fit' : 'max-h-0 md:max-h-fit'
                     } overflow-hidden transition-all duration-300`}
                   >
                     <Suspense data-comment="This suspense fixes a hydration bug in Disclosure.Panel with static prop">

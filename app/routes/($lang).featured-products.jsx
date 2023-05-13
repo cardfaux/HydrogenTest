@@ -15,6 +15,13 @@ export async function getFeaturedData(storefront) {
     },
   });
 
+  data.featuredCollections.nodes.forEach((node) => {
+    console.log(node);
+  });
+  data.featuredProducts.nodes.forEach((node) => {
+    console.log(node);
+  });
+
   invariant(data, 'No data returned from Shopify API');
 
   return {
@@ -27,7 +34,7 @@ const FEATURED_QUERY = `#graphql
   ${PRODUCT_CARD_FRAGMENT}
   query homepage($country: CountryCode, $language: LanguageCode)
   @inContext(country: $country, language: $language) {
-    featuredCollections: collections(first: 3, sortKey: UPDATED_AT) {
+    featuredCollections: collections(first: 3, sortKey: UPDATED_AT, query: "penis-pills") {
       nodes {
         id
         title
@@ -40,7 +47,7 @@ const FEATURED_QUERY = `#graphql
         }
       }
     }
-    featuredProducts: products(first: 12) {
+    featuredProducts: products(first: 12, query: "penis-pills") {
       nodes {
         ...ProductCard
       }

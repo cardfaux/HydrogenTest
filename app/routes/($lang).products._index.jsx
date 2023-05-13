@@ -147,6 +147,30 @@ export default function AllProducts() {
   );
 }
 
+// const ALL_PRODUCTS_QUERY = `#graphql
+//   ${PRODUCT_CARD_FRAGMENT}
+//   query AllProducts(
+//     $country: CountryCode
+//     $language: LanguageCode
+//     $first: Int
+//     $last: Int
+//     $startCursor: String
+//     $endCursor: String
+//   ) @inContext(country: $country, language: $language) {
+//     products(first: $first, last: $last, before: $startCursor, after: $endCursor) {
+//       nodes {
+//         ...ProductCard
+//       }
+//       pageInfo {
+//         hasPreviousPage
+//         hasNextPage
+//         startCursor
+//         endCursor
+//       }
+//     }
+//   }
+// `;
+
 const ALL_PRODUCTS_QUERY = `#graphql
   ${PRODUCT_CARD_FRAGMENT}
   query AllProducts(
@@ -157,7 +181,7 @@ const ALL_PRODUCTS_QUERY = `#graphql
     $startCursor: String
     $endCursor: String
   ) @inContext(country: $country, language: $language) {
-    products(first: $first, last: $last, before: $startCursor, after: $endCursor) {
+    products(first: $first, last: $last, before: $startCursor, after: $endCursor, query: "herquake") {
       nodes {
         ...ProductCard
       }
